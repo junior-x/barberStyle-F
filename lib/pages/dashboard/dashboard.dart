@@ -1,11 +1,16 @@
+import 'package:barber_flutter/pages/kart/kart.dart';
 import 'package:barber_flutter/pages/login/login.dart';
 import 'package:barber_flutter/pages/onboard/onboard1.dart';
 import 'package:barber_flutter/styles.dart';
 import 'package:flutter/material.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
 
+class _DashboardPageState extends State<DashboardPage> {
   Route _createRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const Onboard01(),
@@ -271,7 +276,7 @@ class DashboardPage extends StatelessWidget {
                           color: BarberStyles.mainYellow,
                           borderRadius: BorderRadius.circular(90)),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const KartPage())),
                         icon: const Icon(
                           Icons.local_offer,
                           color: BarberStyles.mainBlack,

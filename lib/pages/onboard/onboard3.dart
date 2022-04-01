@@ -1,9 +1,11 @@
-import 'package:barber_flutter/pages/onboard/onboard2.dart';
 import 'package:barber_flutter/styles.dart';
 import 'package:flutter/material.dart';
 
-class Onboard01 extends StatelessWidget {
-  const Onboard01({Key? key}) : super(key: key);
+
+import 'package:barber_flutter/pages/dashboard/dashboard.dart';
+
+class Onboard03 extends StatelessWidget {
+  const Onboard03({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,10 @@ class Onboard01 extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Container(
+                  color: BarberStyles.mainPink,
                   padding: const EdgeInsets.only(top: 36),
                   child: const Image(
-                    image: AssetImage('assets/onboard1.png'),
+                    image: AssetImage('assets/onboard3.png'),
                   ),
                 ),
               ),
@@ -32,14 +35,14 @@ class Onboard01 extends StatelessWidget {
                         children: [
                           Container(
                             child: const Text(
-                              'Your Best Look',
+                              'All Good :)',
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.8,
                             child: const Text(
-                              'Explore and make your best style for your day!',
+                              'Let s Start! ',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(fontSize: 18, color: Colors.grey),
@@ -57,10 +60,12 @@ class Onboard01 extends StatelessWidget {
                           onPressed: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Onboard02())),
+                                  builder: (context) => const DashboardPage())),
+                          
                           child: const Icon(
-                            Icons.chevron_right,
+                            Icons.check,
                             color: Colors.white,
+                            
                           ),
                         ),
                       ),

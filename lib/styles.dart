@@ -11,5 +11,7 @@ class BarberStyles {
   // static const Color PRIMARY_COLOR = Color(0xFFEF4A72);
   // static const Color PRIMARY_COLOR = Color(0xFFEF4A72);
   // static const Color PRIMARY_COLOR = Color(0xFFEF4A72);
-
+ var  defaultTextLarge = 27;
+  static const int defaultTextMedium = 21;
+  static const int defaultTextSmall = 18;
 }

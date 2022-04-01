@@ -5,6 +5,26 @@ import 'package:flutter/material.dart';
 class Onboard01 extends StatelessWidget {
   const Onboard01({Key? key}) : super(key: key);
 
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const Onboard02(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,14 +52,14 @@ class Onboard01 extends StatelessWidget {
                         children: [
                           Container(
                             child: const Text(
-                              'Your Best Look',
+                              'Seu Melhor Visual!',
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.8,
                             child: const Text(
-                              'Explore and make your best style for your day!',
+                              'Explore e peça o seu melhor visual para o dia!',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(fontSize: 18, color: Colors.grey),
@@ -54,13 +74,13 @@ class Onboard01 extends StatelessWidget {
                             color: BarberStyles.mainPurple,
                             borderRadius: BorderRadius.circular(90)),
                         child: TextButton(
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Onboard02())),
+                          onPressed: () {
+                            Navigator.of(context).push(_createRoute());
+                          },
                           child: const Icon(
-                            Icons.chevron_right,
+                            Icons.arrow_forward,
                             color: Colors.white,
+                            size: 45,
                           ),
                         ),
                       ),
@@ -71,7 +91,7 @@ class Onboard01 extends StatelessWidget {
                           children: [
                             Container(
                               height: 12,
-                              width: 12,
+                              width: 45,
                               decoration: BoxDecoration(
                                   color: BarberStyles.mainPink,
                                   borderRadius: BorderRadius.circular(30)),
@@ -80,14 +100,14 @@ class Onboard01 extends StatelessWidget {
                               height: 12,
                               width: 12,
                               decoration: BoxDecoration(
-                                  color: BarberStyles.mainPink,
+                                  color: Color.fromARGB(255, 251, 144, 171),
                                   borderRadius: BorderRadius.circular(30)),
                             ),
                             Container(
                               height: 12,
                               width: 12,
                               decoration: BoxDecoration(
-                                  color: BarberStyles.mainPink,
+                                  color: Color.fromARGB(255, 251, 144, 171),
                                   borderRadius: BorderRadius.circular(30)),
                             ),
                           ],

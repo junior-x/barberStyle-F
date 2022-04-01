@@ -6,6 +6,26 @@ import 'package:barber_flutter/pages/onboard/onboard3.dart';
 class Onboard02 extends StatelessWidget {
   const Onboard02({Key? key}) : super(key: key);
 
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const Onboard03(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +38,6 @@ class Onboard02 extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Container(
-                  
                   padding: const EdgeInsets.only(top: 36),
                   child: const Image(
                     image: AssetImage('assets/onboard2.png'),
@@ -32,16 +51,51 @@ class Onboard02 extends StatelessWidget {
                     children: [
                       Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                height: 36,
+                                width: 120,
+                                margin: const EdgeInsets.only(left: 27, bottom: 16),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: BarberStyles.mainBlack),
+                                child: TextButton(
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'Homem',
+                                      style: TextStyle(color: Colors.white),
+                                    )),
+                              ),
+                              Container(
+                                height: 36,
+                                width: 120,
+                                margin: const EdgeInsets.only(right: 27, bottom: 16),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: BarberStyles.mainBlack),
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.white),
+                                child: TextButton(
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'Mulher',
+                                      style: TextStyle(color: BarberStyles.mainBlack),
+                                    )),
+                              ),
+                              
+                            ],
+                          ),
                           Container(
                             child: const Text(
-                              'Wellcome',
+                              'Bem Vindo',
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.8,
                             child: const Text(
-                              'Create a custom profile and show us who you are.',
+                              'Deixe o seu perfil do jeitinho que achar melhor',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(fontSize: 18, color: Colors.grey),
@@ -56,14 +110,13 @@ class Onboard02 extends StatelessWidget {
                             color: BarberStyles.mainPurple,
                             borderRadius: BorderRadius.circular(90)),
                         child: TextButton(
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Onboard03())),
-                         
+                          onPressed: () {
+                            Navigator.of(context).push(_createRoute());
+                          },
                           child: const Icon(
-                            Icons.chevron_right,
+                            Icons.arrow_forward,
                             color: Colors.white,
+                            size: 45,
                           ),
                         ),
                       ),
@@ -76,12 +129,12 @@ class Onboard02 extends StatelessWidget {
                               height: 12,
                               width: 12,
                               decoration: BoxDecoration(
-                                  color: BarberStyles.mainPink,
+                                  color: Color.fromARGB(255, 251, 144, 171),
                                   borderRadius: BorderRadius.circular(30)),
                             ),
                             Container(
                               height: 12,
-                              width: 12,
+                              width: 45,
                               decoration: BoxDecoration(
                                   color: BarberStyles.mainPink,
                                   borderRadius: BorderRadius.circular(30)),
@@ -90,7 +143,7 @@ class Onboard02 extends StatelessWidget {
                               height: 12,
                               width: 12,
                               decoration: BoxDecoration(
-                                  color: BarberStyles.mainPink,
+                                  color: Color.fromARGB(255, 251, 144, 171),
                                   borderRadius: BorderRadius.circular(30)),
                             ),
                           ],

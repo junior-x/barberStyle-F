@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {},
                       child: const Text(
-                        'LogIn',
+                        'Cadastrar',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 21,
